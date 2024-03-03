@@ -4,7 +4,7 @@ import WidgetItem from './WidgetItem.vue'
 
 export default {
   components: {
-    'widget-item': WidgetItem
+    WidgetItem
   },
   data() {
     return {
@@ -23,9 +23,9 @@ export default {
 <template>
   <div class="wrapper">
     <h1>Per product widgets</h1>
-    <hr />
+    <hr style="background-color: #B0B0B0;"/>
     <div class="widgets-list">
-      <widget-item v-for="(widget, index) in widgets" :key="index" :widget="widget"></widget-item>
+      <WidgetItem v-for="(widget, index) in widgets" :key="index" :widget="widget"></WidgetItem>
     </div>
   </div>
 </template>
@@ -43,6 +43,7 @@ export default {
 .widgets-list {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 @media only screen and (max-width: 896px) {
