@@ -1,22 +1,19 @@
-<script lang="ts">
+<script lang="ts" setup>
 import axios from 'axios'
 import WidgetItem from './WidgetItem.vue'
+import type {Widget} from "@/interfaces/Widget";
+import {onBeforeMount, onMounted, ref} from "vue";
 
-export default {
-  components: {
-    WidgetItem
-  },
-  data() {
-    return {
-      widgets: []
-      // how make a strict typization Widget[]
-    }
-  },
-  mounted() {
-    axios.get('https://api.mocki.io/v2/016d11e8/product-widgets').then((response) => {
-      this.widgets = response.data
-    })
-  }
+const widgets = ref<Widget[]>([]);
+
+onBeforeMount(()=>{
+  axios.get('https://api.mocki.io/v2/016d11e8/product-widgets').then((response) => {
+    widgets.value = response.data
+  })
+})
+
+const handleChangeColor = (color:string, index:number) =>{
+  widgets.value[index].selectedColor = color;
 }
 </script>
 
@@ -25,7 +22,7 @@ export default {
     <h1>Per product widgets</h1>
     <hr style="background-color: #B0B0B0;"/>
     <div class="widgets-list">
-      <WidgetItem v-for="(widget, index) in widgets" :key="index" :widget="widget"></WidgetItem>
+      <WidgetItem v-for="(widget, index) in widgets" :key="index" :widget="widget" @change-color="handleChangeColor($event, index)"></WidgetItem>
     </div>
   </div>
 </template>

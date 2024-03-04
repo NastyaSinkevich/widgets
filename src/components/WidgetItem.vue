@@ -1,43 +1,37 @@
-<script lang="ts">
-import GreenSparkLogo from '@/images/GreenSparkLogo.vue'
-import { Widget } from '@/interfaces/Widget'
-import CheckboxInput from './common/CheckboxInput.vue'
-import ToggleInput from './common/ToggleInput.vue'
-import ColorPicker from './common/ColorPicker.vue'
-import TooltipItem from './common/TooltipItem.vue'
+<script setup lang="ts">
+import GreenSparkLogo from '@/images/GreenSparkLogo.vue';
+import { Widget } from '@/interfaces/Widget';
+import CheckboxInput from './common/CheckboxInput.vue';
+import ToggleInput from './common/ToggleInput.vue';
+import ColorPicker from './common/ColorPicker.vue';
+import TooltipItem from './common/TooltipItem.vue';
 
-export default {
-  props: {
-    widget: Object as () => Widget
-  },
-  components: {
-    GreenSparkLogo,
-    CheckboxInput,
-    ToggleInput,
-    ColorPicker,
-    TooltipItem
-  }
-}
+const props = defineProps<{
+  widget: Widget;
+}>();
+
+const emit = defineEmits(['changeColor','activate','link']);
+
 </script>
 
 <template>
   <div class="widget">
-    <div class="widget-title" :style="{ 'background-color': widget.selectedColor }">
+    <div class="widget-title" :style="{ 'background-color': props.widget.selectedColor }">
       <GreenSparkLogo class="logo"></GreenSparkLogo>
       <p>
-        This product {{ widget.action }} <br />
-        <span class="secondary-text">{{ widget.amount }} {{ widget.type }}</span>
+        This product {{ props.widget.action }} <br />
+        <span class="secondary-text">{{ props.widget.amount }} {{ props.widget.type }}</span>
       </p>
     </div>
     <div class="card-row">
-      <label :for="widget.id">Link to Public Profile<TooltipItem></TooltipItem></label>
-      <CheckboxInput :id="widget.id" v-model="widget.linked"></CheckboxInput>
+      <label :for="props.widget.id.toString()">Link to Public Profile<TooltipItem /></label>
+      <CheckboxInput :id="props.widget.id.toString()" :value="widget.linked" @change="emit('link')" />
     </div>
     <div class="card-row">
-      <label>Badge colour</label><ColorPicker v-model="widget.selectedColor"></ColorPicker>
+      <label>Badge colour</label><ColorPicker :value="widget.selectedColor" @change="emit('changeColor', $event)" />
     </div>
     <div class="card-row">
-      <label>Activate badge</label><ToggleInput v-model="widget.active"></ToggleInput>
+      <label>Activate badge</label><ToggleInput :value="widget.active" @change="emit('activate')" />
     </div>
   </div>
 </template>
