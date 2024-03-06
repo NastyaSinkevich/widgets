@@ -1,5 +1,11 @@
 <template>
-  <svg width="41" height="46" viewBox="0 0 41 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    :fill="props.fill"
+    width="41"
+    height="46"
+    viewBox="0 0 41 46"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       fill-rule="evenodd"
       clip-rule="evenodd"
@@ -48,3 +54,9 @@
     />
   </svg>
 </template>
+
+<script setup lang="ts">
+const props = defineProps<{
+  fill: string
+}>()
+</script>

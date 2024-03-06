@@ -1,53 +1,49 @@
 <template>
   <span>
-    <span @mouseover="showTooltip" @mouseout="hideTooltip"><TooltipIcon></TooltipIcon></span>
+    <span @mouseover="showTooltip($event)" @mouseout="hideTooltip()"><TooltipIcon></TooltipIcon></span>
     <div
       v-show="isTooltipVisible"
       class="tooltip"
       :style="{ top: `${position.top}px`, left: `${position.left}px` }"
     >
-      <p>{{ tooltipText }}</p>
-      <a :href="tooltipLink" class="tooltip-link">{{ tooltipLinkText }}</a>
+      <p>{{ props.tooltipText }}</p>
+      <a :href="props.tooltipLink" class="tooltip-link">{{ props.tooltipLinkText }}</a>
     </div>
   </span>
 </template>
 
-<script>
-import { ref } from 'vue'
+<script setup lang="ts">
 import TooltipIcon from '@/images/TooltipIcon.vue'
+export interface TooltipProps {
+  tooltipText?: string
+  tooltipLinkText?: string
+  tooltipLink?: string
+}
 
-export default {
-  components: {
-    TooltipIcon
-  },
-  data() {
-    return {
-      isTooltipVisible: false,
-      position: { top: 0, left: 0 },
-      tooltipLink: '#',
-      tooltipLinkText: 'View Public Profile',
-      tooltipText:
-        'This widget links directly to your public profile so that you can easily share your impact with your customers. Turn it off here if you do not want the badge to link to it.'
-    }
-  },
-  methods: {
-    showTooltip(event) {
-      this.isTooltipVisible = true
-      this.position = {
-        top: event.clientY + 10, // Add an offset for better positioning
-        left: event.clientX + 10
-      }
-    },
-    hideTooltip() {
-      this.isTooltipVisible = false
-    }
+const props = withDefaults(defineProps<TooltipProps>(), {
+  tooltipText:
+    'This widget links directly to your public profile so that you can easily share your impact with your customers. Turn it off here if you do not want the badge to link to it.',
+  tooltipLinkText: 'View Public Profile',
+  tooltipLink: '#'
+})
+let position = { top: 0, left: 0 }
+let isTooltipVisible = false
+
+const showTooltip = (event: MouseEvent) => {
+  isTooltipVisible = true
+  position = {
+    top: event.clientY + 10,
+    left: event.clientX + 10
   }
+}
+const hideTooltip = () => {
+  isTooltipVisible = false
 }
 </script>
 
 <style scoped>
 span {
-    cursor: pointer;
+  cursor: pointer;
 }
 .tooltip {
   position: absolute;

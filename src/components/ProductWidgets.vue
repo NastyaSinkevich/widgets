@@ -1,28 +1,46 @@
 <script lang="ts" setup>
-import axios from 'axios'
-import WidgetItem from './WidgetItem.vue'
-import type {Widget} from "@/interfaces/Widget";
-import {onBeforeMount, onMounted, ref} from "vue";
+import axios from 'axios';
+import WidgetItem from './WidgetItem.vue';
+import type { Widget } from '@/interfaces/Widget';
+import { onBeforeMount, ref } from 'vue';
 
 const widgets = ref<Widget[]>([]);
 
-onBeforeMount(()=>{
+onBeforeMount(() => {
   axios.get('https://api.mocki.io/v2/016d11e8/product-widgets').then((response) => {
-    widgets.value = response.data
+    widgets.value = response.data;
   })
 })
 
-const handleChangeColor = (color:string, index:number) =>{
+const handleChangeColor = (color: string, index: number) => {
   widgets.value[index].selectedColor = color;
+}
+
+const handleChangeLinkToProfile = (isLinked: boolean, index: number) => {
+  widgets.value[index].linked = isLinked;
+}
+
+const handleChangeActive = (isActive: boolean, index: number) => {
+  widgets.value.forEach(widget => {
+    widget.active= false;
+  });
+  widgets.value[index].active = isActive;
 }
 </script>
 
 <template>
   <div class="wrapper">
     <h1>Per product widgets</h1>
-    <hr style="background-color: #B0B0B0;"/>
+    <hr style="background-color: #b0b0b0" />
     <div class="widgets-list">
-      <WidgetItem v-for="(widget, index) in widgets" :key="index" :widget="widget" @change-color="handleChangeColor($event, index)"></WidgetItem>
+      <WidgetItem
+        v-for="(widget, index) in widgets"
+        :key="index"
+        :widget="widget"
+        @change-color="handleChangeColor($event, index)"
+        @change-link="handleChangeLinkToProfile($event, index)"
+        @change-active="handleChangeActive($event, index)"
+      ></WidgetItem>
     </div>
   </div>
 </template>
