@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProductWidgets from '../components/ProductWidgets.vue'
+import ProductWidgets from '@/components/ProductWidgets.vue'
 </script>
 
 <template>

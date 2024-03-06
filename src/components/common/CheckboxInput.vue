@@ -1,61 +1,21 @@
-<!-- <template>
-  <div>
-    <label>
-      {{ label }}
-      <input
-        type="checkbox"
-        :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
-      />
-      <span class="checkmark"></span>
-    </label>
+<template>
+  <div class="container">
+    <input :id="props.id" type="checkbox" :value="value" @input="emit('change', value)" />
+    <div class="checkmark"></div>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    label: {
-      type: String,
-      default: ''
-    },
-    modelValue: {
-      type: Boolean,
-      default: false
-    }
-  }
-}
-</script> -->
+<script setup lang="ts">
+import { ref } from 'vue'
+const props = defineProps<{
+  id: string
+}>()
 
-<template>    
-    <div class="container">
-      <input id="" type="checkbox" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)"/>
-      <span class="checkmark"></span>
-    </div>
-</template>
-
-<script>
-export default {
-  props: {
-    modelValue: { type: Boolean },
-    // value: { type: [Boolean, Object] },
-  },
-  // computed: {
-  //   model: {
-  //     get() {
-  //       return this.modelValue
-  //     },
-  //     set(value) {
-  //       this.$emit('update:modelValue', value)
-  //     }
-  //   }
-  // },
-
-}
+const emit = defineEmits(['change'])
+const value = ref('')
 </script>
 
 <style scoped>
-
 .container {
   display: block;
   position: relative;
@@ -70,107 +30,74 @@ export default {
   position: absolute;
   opacity: 0;
   cursor: pointer;
-  height: 0;
-  width: 0;
+  height: 25px;
+  width: 25px;
 }
 
-/* Create a custom checkbox */
 .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
   height: 25px;
   width: 25px;
   background-color: #eee;
 }
-
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
+.checkmark :hover {
+  background-color: #AFC6BD;
 }
 
-/* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color:#3b755f;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-/* 
-label {
-  display: flex;
-  justify-content: space-between;
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-}
-label input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-label input:checked ~ .checkmark {
   background-color: #3b755f;
 }
-
+.container input:not(checked) ~ .checkmark {
+  background-color: #ccc;
+}
 .checkmark:after {
   content: '';
   position: absolute;
   display: none;
+  color: #ccc;
 }
-
 .container input:checked ~ .checkmark:after {
   display: block;
 }
-
-label .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
+.container .checkmark:after {
+  right: 5px;
+  top: 0px;
+  width: 14px;
+  height: 20px;
   border: solid white;
   border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-} */
+}
+
+/*//////////////////
+
+.checkbox-custom {
+  display: none;
+}
+
+/* Style for the label that represents the checkbox */
+.checkbox-custom-label {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  background: #AFC6BD;
+  cursor: pointer;
+  border-radius: 5px;
+  position: relative;
+}
+
+/* Style when the checkbox is checked */
+.checkbox-custom:checked + .checkbox-custom-label {
+  background: #3b755f;
+}
+
+/* Style for the checkmark */
+.checkbox-custom:checked + .checkbox-custom-label:after {
+  content: '✓';
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+}
 </style>
