@@ -38,8 +38,8 @@ const handleChangeActive = (isActive: boolean, index: number) => {
         :key="index"
         :widget="widget"
         @change-color="handleChangeColor($event, index)"
-        @change-link="handleChangeLinkToProfile($event, index)"
-        @change-active="handleChangeActive($event, index)"
+        @link="handleChangeLinkToProfile($event, index)"
+        @activate="handleChangeActive($event, index)"
       ></WidgetItem>
     </div>
   </div>
@@ -62,10 +62,14 @@ const handleChangeActive = (isActive: boolean, index: number) => {
 }
 
 @media only screen and (max-width: 896px) {
+  .wrapper {
+    min-height: 0;
+    min-width: 0;
+  }
   .widgets-list {
     flex-direction: column;
-    min-height: auto;
-    min-width: auto;
+    align-items: center;
+    margin-bottom: 20px;
   }
 }
 </style>

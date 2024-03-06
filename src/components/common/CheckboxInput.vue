@@ -67,4 +67,37 @@ const value = ref('')
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
+
+/*//////////////////
+
+.checkbox-custom {
+  display: none;
+}
+
+/* Style for the label that represents the checkbox */
+.checkbox-custom-label {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  background: #AFC6BD;
+  cursor: pointer;
+  border-radius: 5px;
+  position: relative;
+}
+
+/* Style when the checkbox is checked */
+.checkbox-custom:checked + .checkbox-custom-label {
+  background: #3b755f;
+}
+
+/* Style for the checkmark */
+.checkbox-custom:checked + .checkbox-custom-label:after {
+  content: '✓';
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+}
 </style>

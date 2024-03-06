@@ -15,7 +15,7 @@ const emit = defineEmits(['changeColor', 'activate', 'link'])
 const widgetRef = reactive(props.widget)
 const getContrast = (hexcolor: string) => {
   if (!hexcolor.includes('#')) {
-    return '';
+    return ''
   }
   const hexToRgb = (hex: string) => [
     parseInt(hex.slice(1, 3), 16),
@@ -32,7 +32,7 @@ const getContrast = (hexcolor: string) => {
   const blackContrast =
     (luminance([0, 0, 0]) + 0.05) / (Math.min(...calculateLuminance(hexToRgb(hexcolor))) + 0.05)
 
-  return whiteContrast < blackContrast ? '#ffffff' : '#000000'
+  return whiteContrast < blackContrast ? '#ffffff' : '#3b755f'
 }
 </script>
 
@@ -52,7 +52,7 @@ const getContrast = (hexcolor: string) => {
       </p>
     </div>
     <div class="card-row">
-      <label :for="`${props.widget.id}-link`">Link to Public Profile<TooltipItem /></label>
+      <label :for="`${props.widget.id}-link`">Link to Public Profile</label><TooltipItem />
       <CheckboxInput
         :id="`${props.widget.id}-link`"
         :value="props.widget.linked"
@@ -72,7 +72,6 @@ const getContrast = (hexcolor: string) => {
 
 <style>
 .widget {
-  height: 167px;
   width: 230px;
   border-radius: 6px;
   box-shadow: 1px 1px 2px rgba(183, 182, 182, 0.1);
@@ -90,16 +89,16 @@ const getContrast = (hexcolor: string) => {
       font-weight: 700;
     }
   }
-}
 
-.card-row {
-  display: flex;
-  justify-content: space-between;
-  color: #3b755f;
-  padding: 5px 0;
-}
+  .card-row {
+    display: flex;
+    justify-content: space-between;
+    color: #3b755f;
+    padding: 5px 0;
+  }
 
-.logo {
-  margin-right: 10px;
+  .logo {
+    margin-right: 10px;
+  }
 }
 </style>

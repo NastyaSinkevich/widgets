@@ -11,12 +11,12 @@ export default {
 
 export const NotChecked = {
   args: {
-    modelValue: false,
+    value: false,
   },
 };
 
 export const Checked = {
   args: {
-    modelValue: true,
+    value: true,
   },
 };

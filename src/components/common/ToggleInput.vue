@@ -1,6 +1,6 @@
 <template>
-  <div class="toggle-switch" :class="{ on: currentValue }" @click="toggle">
-    <div :class="{ 'switch-on': currentValue, 'switch-off': !currentValue }"></div>
+  <div class="toggle-switch" :class="{ on: props.value }" @click="toggle">
+    <div :class="{ 'switch-on': props.value, 'switch-off': !props.value }"></div>
   </div>
 </template>
 
@@ -8,11 +8,9 @@
 const props = defineProps({
   value: Boolean
 })
-let currentValue = props.value;
-const emit = defineEmits(['change'])
+const emit = defineEmits(['change']);
 const toggle = () => {
-  currentValue = !currentValue
-  emit('change', currentValue)
+  emit('change', !props.value)
 }
 </script>
 
