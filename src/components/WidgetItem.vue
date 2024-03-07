@@ -74,7 +74,8 @@ const getContrast = (hexcolor: string) => {
 .widget {
   width: 230px;
   border-radius: 6px;
-  box-shadow: 1px 1px 2px rgba(183, 182, 182, 0.1);
+  box-shadow: 1px 1px 2px rgba(147, 146, 146, 0.1);
+  margin-bottom: 20px;
 
   .widget-title {
     display: flex;
@@ -95,10 +96,12 @@ const getContrast = (hexcolor: string) => {
     justify-content: space-between;
     color: #3b755f;
     padding: 5px 0;
+    min-height: 28px;
   }
 
   .logo {
     margin-right: 10px;
   }
+
 }
 </style>

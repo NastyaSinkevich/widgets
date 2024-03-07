@@ -35,12 +35,12 @@ const handleChangeActive = (isActive: boolean, index: number) => {
     <div class="widgets-list">
       <WidgetItem
         v-for="(widget, index) in widgets"
-        :key="index"
+        :key="index+widget.id"
         :widget="widget"
         @change-color="handleChangeColor($event, index)"
         @link="handleChangeLinkToProfile($event, index)"
         @activate="handleChangeActive($event, index)"
-      ></WidgetItem>
+      />
     </div>
   </div>
 </template>

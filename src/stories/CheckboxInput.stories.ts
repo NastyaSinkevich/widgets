@@ -1,8 +1,6 @@
 
 import CheckboxInput from '@/components/common/CheckboxInput.vue';
 
-import { action } from '@storybook/addon-actions';
-
 export default {
   component: CheckboxInput,
   title: 'Checkbox Input',

@@ -8,7 +8,7 @@
 const props = defineProps({
   value: Boolean
 })
-const emit = defineEmits(['change']);
+const emit = defineEmits(['change'])
 const toggle = () => {
   emit('change', !props.value)
 }
@@ -35,6 +35,9 @@ const toggle = () => {
 
 .switch-off {
   transform: translateX(0);
+}
+.switch-off:hover {
+  box-shadow: 0 0 0 6px #afc6bd;
 }
 
 div {

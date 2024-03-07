@@ -12,13 +12,13 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{ colorOptions?: string[] }>(), {
+const props = withDefaults(defineProps<{ colorOptions?: string[], selected?: string }>(), {
   colorOptions: () => ['#2E3A8C', '#3B755F', '#F2EBDB', '#FFFFFF', '#212121']
 });
 
 const emit = defineEmits(['change']);
 
-let selectedColor = '';
+let selectedColor = props.selected ?? '' ;
 
 const selectColor = (color: string) => {
   selectedColor = color;
