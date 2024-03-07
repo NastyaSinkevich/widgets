@@ -1,7 +1,5 @@
 import ColorPicker from '@/components/common/ColorPicker.vue'
 
-import { action } from '@storybook/addon-actions'
-
 export default {
   component: ColorPicker,
   title: 'Color Picker',
@@ -9,5 +7,8 @@ export default {
 }
 
 export const ColorPickerDefault = {
-  args: {}
+  args: {
+    colorOptions: ['#2E3A8C', '#3B755F', '#F2EBDB', '#FFFFFF', '#212121'], 
+    selected: '#3B755F',
+  }
 }
