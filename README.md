@@ -1,25 +1,17 @@
 # widgets
 
-This template should help get you started developing with Vue 3 in Vite.
+I have been working with Angular for over five years, but when presented with the opportunity to explore Vue.js through a given test task, I found it intriguing to venture into Vue.js development.
 
-## Recommended IDE Setup
+This project is my attempt to implement the specified functionality using Vue.js. Keep in mind that this represents my initial exposure to Vue.js (or what I learned within a week during my free time).
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Features
+I've implemented the basic functionality as outlined in the test task, striving to familiarize myself with Vue.js concepts. The project incorporates fundamental features, but I acknowledge that there is room for improvement and refinement.
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Key Points
+My favourite part: The thing that I really like in my project is working with contrasts and colors of the text and background of the badge dynamically.
+Learning Curve: Transitioning from Angular to Vue.js has been an exciting learning experience.
+Testing: I've included minimal unit tests to ensure basic functionality.
+Storybook: Basic Storybook integration is added for component visualization.
 
 ## Project Setup
 
@@ -33,20 +25,20 @@ npm install
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Run Unit Tests
 
 ```sh
 npm run test:unit
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Lint
 
 ```sh
 npm run lint
+```
+
+### Storybook
+
+```sh
+npm run storybook
 ```
